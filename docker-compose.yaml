@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: ./app
+    expose:
+      - "8080"
+  nginx:
+    build:
+      context: ./nginx
+    depends_on: 
+      - app
+    links:
+      - app
+    ports:
+      - 80:80
+  
